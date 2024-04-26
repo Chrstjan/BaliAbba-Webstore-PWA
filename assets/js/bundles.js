@@ -1,3 +1,3 @@
-import { logMessage } from "./Components/app.js";
+import { initPageLoad } from "./Components/initPage.js";
 
-logMessage();
+initPageLoad();
