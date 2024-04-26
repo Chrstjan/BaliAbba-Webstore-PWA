@@ -36,6 +36,97 @@
 }
 
 /*#endregion header  */
+/*#region app  */
+/*#region product cards  */
+/*#region featured product cards  */
+#app .product-card,
+#app .product-detail-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #000;
+  border-radius: 7px;
+  padding: 0rem 0.7rem 0rem 0.7rem;
+}
+#app .product-card .product-name,
+#app .product-detail-card .product-name {
+  text-align: center;
+  border-bottom: 2px solid #000;
+  margin-bottom: 0.5rem;
+  width: 110%;
+}
+#app .product-card .product-thumbnail,
+#app .product-detail-card .product-thumbnail {
+  width: 100%;
+}
+#app .product-card .about-product .ratings-container,
+#app .product-detail-card .about-product .ratings-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5rem;
+}
+#app .product-card .about-product .ratings-container p:last-of-type,
+#app .product-detail-card .about-product .ratings-container p:last-of-type {
+  padding-bottom: 0.1rem;
+}
+#app .product-card .about-product .ratings-container .stars-container,
+#app .product-detail-card .about-product .ratings-container .stars-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
+}
+#app .product-card .about-product .ratings-container .stars-container p:last-of-type,
+#app .product-detail-card .about-product .ratings-container .stars-container p:last-of-type {
+  padding-bottom: 0.3rem;
+  color: yellow;
+}
+#app .product-card .about-product .button-container,
+#app .product-detail-card .about-product .button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+#app .product-card .about-product .button-container button,
+#app .product-detail-card .about-product .button-container button {
+  border: 0;
+  background: green;
+  padding: 0.6rem 0.9rem;
+  border-radius: 10px;
+  text-transform: capitalize;
+}
+#app .product-card .about-product .product-description p,
+#app .product-detail-card .about-product .product-description p {
+  text-align: right;
+}
+#app .product-card .about-product .product-description .low-stock,
+#app .product-detail-card .about-product .product-description .low-stock {
+  color: #bb1100;
+}
+
+/*#endregion featured product cards  */
+/*#region detailed product card  */
+#app .product-detail-card .about-product .product-images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0.8rem 0.8rem 0rem 0.8rem;
+}
+#app .product-detail-card .about-product .product-images img {
+  max-width: 50px;
+  width: 14vw;
+  height: auto;
+}
+
+/*#endregion detailed product card  */
+/*#endregion product cards  */
+/*#endregion app  */
 /*#region footer*/
 .main-footer {
   background: #1c1c1c;

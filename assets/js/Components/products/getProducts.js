@@ -1,5 +1,8 @@
 import { myFetchData } from "../../Utils/apiUtils.js";
-import { buildProductsCards } from "./buildProductCards.js";
+import {
+  buildProductsCards,
+  buildProductDetailsCard,
+} from "./buildProductCards.js";
 
 let allProductsArray;
 let featuredProductsArray = [];
@@ -21,4 +24,13 @@ const receivedProducts = (productsData) => {
   );
 
   buildProductsCards(featuredProductsArray);
+};
+
+export const productCardCallback = (clickedProduct) => {
+  console.log(clickedProduct);
+  allProductsArray.map((allProducts) => {
+    if (allProducts.id === clickedProduct) {
+      buildProductDetailsCard(allProducts);
+    }
+  });
 };

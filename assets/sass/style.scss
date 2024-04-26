@@ -43,6 +43,107 @@
 }
 /*#endregion header  */
 
+/*#region app  */
+
+/*#region product cards  */
+
+/*#region featured product cards  */
+#app .product-card,
+#app .product-detail-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #000;
+  border-radius: 7px;
+  padding: 0rem 0.7rem 0rem 0.7rem;
+
+  .product-name {
+    text-align: center;
+    border-bottom: 2px solid #000;
+    margin-bottom: 0.5rem;
+    width: 110%;
+  }
+
+  .product-thumbnail {
+    width: 100%;
+  }
+
+  .about-product {
+    .ratings-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 0.5rem;
+
+      p:last-of-type {
+        padding-bottom: 0.1rem;
+      }
+
+      .stars-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 0.2rem;
+
+        p:last-of-type {
+          padding-bottom: 0.3rem;
+          color: yellow;
+        }
+      }
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+
+      button {
+        border: 0;
+        background: green;
+        padding: 0.6rem 0.9rem;
+        border-radius: 10px;
+        text-transform: capitalize;
+      }
+    }
+
+    .product-description {
+      p {
+        text-align: right;
+      }
+      .low-stock {
+        color: #bb1100;
+      }
+    }
+  }
+}
+/*#endregion featured product cards  */
+
+/*#region detailed product card  */
+#app .product-detail-card {
+  .about-product .product-images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4rem;
+    margin: 0.8rem 0.8rem 0rem 0.8rem;
+
+    img {
+      max-width: 50px;
+      width: 14vw;
+      height: auto;
+    }
+  }
+}
+/*#endregion detailed product card  */
+
+/*#endregion product cards  */
+
+/*#endregion app  */
+
 /*#region footer*/
 .main-footer {
   background: #1c1c1c;
