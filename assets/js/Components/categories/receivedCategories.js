@@ -1,3 +1,5 @@
+import { buildSidebar } from "../other/sidebar.js";
+
 let eletronicArray = [];
 let homeDecorArray = [];
 let clothesArray = [];
@@ -6,7 +8,7 @@ let skincareArray = [];
 let vehiclesArray = [];
 let miscArray = [];
 
-export const receivedCategories = (categories) => {
+export const receivedCategories = async (categories) => {
   console.log(categories);
 
   categories.map((category) => {
@@ -54,7 +56,7 @@ export const receivedCategories = (categories) => {
     }
   });
 
-  let supCategoryData = [
+  let supCategoryArray = [
     {
       supCategory: "Eletronic Devices",
       subCategory: eletronicArray,
@@ -85,5 +87,5 @@ export const receivedCategories = (categories) => {
     },
   ];
 
-  console.log(supCategoryData);
+  buildSidebar(supCategoryArray);
 };

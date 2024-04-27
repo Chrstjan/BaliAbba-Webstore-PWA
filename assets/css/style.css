@@ -3,6 +3,8 @@
   background: #1c1c1c;
   color: #fff;
   width: 100%;
+  position: fixed;
+  top: 0;
 }
 .main-container .main-header .main-nav {
   display: flex;
@@ -37,6 +39,10 @@
 
 /*#endregion header  */
 /*#region app  */
+#app {
+  padding-top: 5rem;
+}
+
 /*#region loading  */
 @-webkit-keyframes loadingSpin {
   0% {
@@ -71,6 +77,71 @@
 }
 
 /*#endregion loading  */
+/*#region sidebar */
+#app #sidebar {
+  display: none;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+#app #sidebar.show-sidebar {
+  display: block;
+  z-index: 999;
+  position: fixed;
+  top: 60%;
+  left: 49.99%;
+  transform: translate(-50%, -50%);
+  background: rgba(28, 28, 28, 0.6);
+  width: 100%;
+  height: 100%;
+  color: #fff;
+}
+#app #sidebar.show-sidebar .sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+#app #sidebar.show-sidebar .sidebar-nav ul {
+  margin: 0;
+  padding: 0;
+}
+#app #sidebar.show-sidebar .sidebar-nav li {
+  list-style-type: none;
+}
+#app #sidebar.show-sidebar .sidebar-nav .top-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 0rem 0.6rem 0rem;
+  border-bottom: 4px solid #000;
+  background: #1c1c1c;
+  width: 100%;
+}
+#app #sidebar.show-sidebar .sidebar-nav .top-nav button {
+  border: 0;
+  background: transparent;
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 20px;
+}
+#app #sidebar.show-sidebar .sidebar-nav .categories-nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.7rem;
+}
+#app #sidebar.show-sidebar .sidebar-nav .categories-nav .sup-category li {
+  font-size: 23px;
+}
+
+/*#endregion sidebar */
 /*#region product cards  */
 /*#region featured product cards  */
 #app .product-card,
