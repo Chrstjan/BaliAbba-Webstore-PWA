@@ -1,3 +1,5 @@
+import { categoryCallback } from "../categories/receivedCategories.js";
+
 const sidebarParentContainer = document.getElementById("app");
 
 const sidebarBtn = document.getElementById("hamburger");
@@ -25,7 +27,14 @@ export const buildSidebar = async (categories) => {
   categories.map((category) => {
     sidebarContent += `
                 <ul class="sup-category">
-                    <li>${category.supCategory}</li>
+                    <li>
+                      <button 
+                        class="sup-category-btn"
+                        data-category="${category.supCategory}"
+                        >
+                        ${category.supCategory}
+                      </button>
+                    </li>
                 </ul>`;
   });
 
@@ -35,4 +44,12 @@ export const buildSidebar = async (categories) => {
 
   sidebarContainer.innerHTML = sidebarContent;
   sidebarParentContainer.appendChild(sidebarContainer);
+
+  const supCategoryItems = document.querySelectorAll(".sup-category-btn");
+  supCategoryItems.forEach((item) => {
+    item.addEventListener("click", () => {
+      const clickedCategory = item.dataset.category;
+      categoryCallback(clickedCategory);
+    });
+  });
 };

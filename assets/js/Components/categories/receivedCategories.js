@@ -1,7 +1,9 @@
 import { buildSidebar } from "../other/sidebar.js";
+import { buildCategoriesCard } from "./buildCategoriesCards.js";
 
 const sidebarBtn = document.getElementById("hamburger");
 
+let supCategoryArray;
 let eletronicArray = [];
 let homeDecorArray = [];
 let clothesArray = [];
@@ -58,7 +60,7 @@ export const receivedCategories = async (categories) => {
     }
   });
 
-  let supCategoryArray = [
+  supCategoryArray = [
     {
       supCategory: "Eletronic Devices",
       subCategory: eletronicArray,
@@ -91,5 +93,15 @@ export const receivedCategories = async (categories) => {
 
   sidebarBtn.addEventListener("click", () => {
     buildSidebar(supCategoryArray);
+  });
+};
+
+export const categoryCallback = (clickedCategory) => {
+  console.log(clickedCategory);
+
+  supCategoryArray.map((supCat) => {
+    if (supCat.supCategory === clickedCategory) {
+      buildCategoriesCard(supCat);
+    }
   });
 };
