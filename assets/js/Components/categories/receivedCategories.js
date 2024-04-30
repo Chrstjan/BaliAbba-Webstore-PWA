@@ -1,5 +1,7 @@
 import { buildSidebar } from "../other/sidebar.js";
 
+const sidebarBtn = document.getElementById("hamburger");
+
 let eletronicArray = [];
 let homeDecorArray = [];
 let clothesArray = [];
@@ -87,5 +89,7 @@ export const receivedCategories = async (categories) => {
     },
   ];
 
-  buildSidebar(supCategoryArray);
+  sidebarBtn.addEventListener("click", () => {
+    buildSidebar(supCategoryArray);
+  });
 };
