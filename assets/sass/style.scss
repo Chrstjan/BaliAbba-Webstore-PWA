@@ -47,6 +47,7 @@
 /*#region app  */
 #app {
   padding-top: 5rem;
+  @include flexContainer(column);
 }
 
 /*#region loading  */
@@ -79,9 +80,9 @@
   display: none;
 }
 
-body.no-scroll {
-  overflow: hidden;
-}
+// body.no-scroll {
+//   overflow: hidden;
+// }
 
 #app #sidebar.show-sidebar {
   display: block;

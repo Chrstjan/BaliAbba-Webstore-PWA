@@ -1,3 +1,5 @@
+import { categoryProductCallback } from "../products/receivedProducts.js";
+
 const categoryParentContainer = document.getElementById("app");
 
 export const buildCategoriesCard = (categories) => {
@@ -16,9 +18,19 @@ export const buildCategoriesCard = (categories) => {
 
   categories.subCategory.map((subCategories) => {
     console.log(subCategories);
-    let subCategoriesBtn = `<button>${subCategories}</button>`;
+    let subCategoriesBtn = `<button class="sub-category-btn" data-subcategory="${subCategories}">${subCategories}</button>`;
 
     categoryContainer.innerHTML += subCategoriesBtn;
+  });
+
+  categoryParentContainer.appendChild(categoryContainer);
+
+  const subCategoriesBtn = document.querySelectorAll(".sub-category-btn");
+  subCategoriesBtn.forEach((item) => {
+    item.addEventListener("click", () => {
+      const clickedSubCategory = item.dataset.subcategory;
+      categoryProductCallback(clickedSubCategory);
+    });
   });
 };
 

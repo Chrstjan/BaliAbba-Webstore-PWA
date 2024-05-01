@@ -41,6 +41,10 @@
 /*#region app  */
 #app {
   padding-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 /*#region loading  */
@@ -80,10 +84,6 @@
 /*#region sidebar */
 #app #sidebar {
   display: none;
-}
-
-body.no-scroll {
-  overflow: hidden;
 }
 
 #app #sidebar.show-sidebar {

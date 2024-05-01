@@ -1,4 +1,4 @@
-import { productCardCallback } from "./getProducts.js";
+import { productCardCallback } from "./receivedProducts.js";
 let cardsContainer = document.getElementById("app");
 
 export const buildProductsCards = (featuredProducts) => {
