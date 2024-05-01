@@ -2,6 +2,40 @@ import { categoryProductCallback } from "../products/receivedProducts.js";
 
 const categoryParentContainer = document.getElementById("app");
 
+export const buildAllCategories = (categories) => {
+  clearApp();
+
+  console.log(categories);
+
+  categories.map((allCategories) => {
+    const allCategoryContainer = document.createElement("div");
+    allCategoryContainer.classList.add("sup-categories-container");
+
+    let supCategoryHeader = `
+      <header>
+        <h2>${allCategories.supCategory}</h2>
+      </header>`;
+
+    allCategoryContainer.innerHTML += supCategoryHeader;
+
+    allCategories.subCategory.map((subCategories) => {
+      let subCategoryBtn = `<button class="sub-categories-btn" data-subcategory="${subCategories}">${subCategories}</button>`;
+
+      allCategoryContainer.innerHTML += subCategoryBtn;
+    });
+
+    categoryParentContainer.appendChild(allCategoryContainer);
+  });
+
+  const subCategoriesBtn = document.querySelectorAll(".sub-categories-btn");
+  subCategoriesBtn.forEach((item) => {
+    item.addEventListener("click", () => {
+      const clickedSubCategory = item.dataset.subcategory;
+      categoryProductCallback(clickedSubCategory);
+    });
+  });
+};
+
 export const buildCategoriesCard = (categories) => {
   clearApp();
   console.log(categories);

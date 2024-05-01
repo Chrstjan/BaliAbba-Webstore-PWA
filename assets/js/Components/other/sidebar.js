@@ -1,3 +1,4 @@
+import { buildAllCategories } from "../categories/buildCategoriesCards.js";
 import { categoryCallback } from "../categories/receivedCategories.js";
 
 const sidebarParentContainer = document.getElementById("app");
@@ -44,6 +45,11 @@ export const buildSidebar = async (categories) => {
 
   sidebarContainer.innerHTML = sidebarContent;
   sidebarParentContainer.appendChild(sidebarContainer);
+
+  const allCategoriesBtn = document.getElementById("categories");
+  allCategoriesBtn.addEventListener("click", () => {
+    buildAllCategories(categories);
+  });
 
   const supCategoryItems = document.querySelectorAll(".sup-category-btn");
   supCategoryItems.forEach((item) => {

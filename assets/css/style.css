@@ -112,6 +112,14 @@
 #app #sidebar.show-sidebar .sidebar-nav li {
   list-style-type: none;
 }
+#app #sidebar.show-sidebar .sidebar-nav li button {
+  border: 0;
+  background: transparent;
+  font-size: 24px;
+  color: #fff;
+  text-transform: capitalize;
+  padding: 0.2rem 0.4rem;
+}
 #app #sidebar.show-sidebar .sidebar-nav .top-nav {
   display: flex;
   flex-direction: row;
@@ -232,6 +240,31 @@
 
 /*#endregion detailed product card  */
 /*#endregion product cards  */
+/*#region category cards  */
+#app .category-container,
+#app .sup-categories-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 2rem;
+}
+#app .category-container header,
+#app .sup-categories-container header {
+  border-bottom: 2px solid #000;
+}
+#app .category-container button,
+#app .sup-categories-container button {
+  border: 0;
+  background: transparent;
+  font-size: 24px;
+  text-transform: capitalize;
+  background: rgba(119, 119, 119, 0.1333333333);
+  padding: 0.2rem 0.4rem;
+}
+
+/*#endregion category cards  */
 /*#endregion app  */
 /*#region footer*/
 .main-footer {
