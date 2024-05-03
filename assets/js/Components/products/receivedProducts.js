@@ -5,10 +5,25 @@ import { buildProductDetailsCard } from "./buildProductDetailsCard.js";
 let allProductsArray;
 export let featuredProductsArray = [];
 
-//product cards view code should be move into own files and functions!
-
 export const receivedProducts = (productsData) => {
   allProductsArray = productsData.products;
+
+  allProductsArray.map((products) => {
+    const randRatingsAmount = Math.floor(Math.random() * 3500 + 1);
+    products.ratingsAmount = randRatingsAmount;
+
+    if (products.stock <= 20) {
+      products.lowStock = true;
+    } else {
+      products.lowStock = false;
+    }
+
+    if (products.ratingsAmount >= 800) {
+      products.bestseller = true;
+    } else {
+      products.bestseller = false;
+    }
+  });
 
   featuredProductsArray.push(
     allProductsArray[Math.floor(Math.random() * allProductsArray.length)],

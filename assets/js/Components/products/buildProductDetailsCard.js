@@ -19,7 +19,6 @@ export const buildProductDetailsCard = (product) => {
     categoryProductCallback(product.category);
   });
 
-  const randRatingsAmount = Math.floor(Math.random() * 3500 + 1);
   let productDetailFigure = document.createElement("figure");
   productDetailFigure.classList.add("product-detail-card");
 
@@ -43,7 +42,7 @@ export const buildProductDetailsCard = (product) => {
                         <p>${product.rating}</p>
                         <p>★</p>
                     </span>
-                    <p>(${randRatingsAmount} reviews)</p>
+                    <p>(${product.ratingsAmount} reviews)</p>
                 </span>
                 <div class="button-container">
                     <h3>${product.price} $</h3>

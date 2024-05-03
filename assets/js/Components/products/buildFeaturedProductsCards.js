@@ -7,7 +7,6 @@ export const buildFeaturedProductsCards = (featuredProducts) => {
 
   console.log(featuredProducts);
 
-  const randRatingsAmount = Math.floor(Math.random() * 3500 + 1);
   featuredProducts.map((products) => {
     let productFigure = document.createElement("figure");
     productFigure.classList.add("product-card");
@@ -26,7 +25,7 @@ export const buildFeaturedProductsCards = (featuredProducts) => {
                         <p>${products.rating}</p>
                         <p>★</p>
                     </span>
-                    <p>(${randRatingsAmount} reviews)</p>
+                    <p>(${products.ratingsAmount} reviews)</p>
                 </span>
                 <div class="button-container">
                     <h3>${products.price} $</h3>
