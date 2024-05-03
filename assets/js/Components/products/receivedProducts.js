@@ -1,7 +1,6 @@
-import {
-  buildProductsCards,
-  buildProductDetailsCard,
-} from "./buildProductCards.js";
+import { buildFeaturedProductsCards } from "./buildFeaturedProductsCards.js";
+import { buildProductsCards } from "./buildProductCards.js";
+import { buildProductDetailsCard } from "./buildProductDetailsCard.js";
 
 let allProductsArray;
 export let featuredProductsArray = [];
@@ -16,7 +15,7 @@ export const receivedProducts = (productsData) => {
     allProductsArray[Math.floor(Math.random() * allProductsArray.length)],
     allProductsArray[Math.floor(Math.random() * allProductsArray.length)]
   );
-  buildProductsCards(featuredProductsArray);
+  buildFeaturedProductsCards(featuredProductsArray);
 };
 
 export const productCardCallback = (clickedProduct) => {

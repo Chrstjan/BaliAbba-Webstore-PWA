@@ -1,5 +1,5 @@
 import { featuredProductsArray } from "../products/receivedProducts.js";
-import { buildProductsCards } from "../products/buildProductCards.js";
+import { buildFeaturedProductsCards } from "../products/buildFeaturedProductsCards.js";
 import { supCategoryCallback } from "../categories/receivedCategories.js";
 import { buildAllCategories } from "../categories/buildCategoriesCards.js";
 
@@ -50,7 +50,7 @@ export const buildSidebar = async (categories) => {
 
   const homeBtn = document.getElementById("home-btn");
   homeBtn.addEventListener("click", () => {
-    buildProductsCards(featuredProductsArray);
+    buildFeaturedProductsCards(featuredProductsArray);
   });
 
   const allCategoriesBtn = document.getElementById("categories");
