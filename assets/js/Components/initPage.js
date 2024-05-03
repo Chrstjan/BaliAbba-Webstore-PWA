@@ -2,9 +2,11 @@
 import { createLoading } from "./other/loading.js";
 import { getProductCategories } from "./categories/getCategories.js";
 import { getProducts } from "./products/getProducts.js";
+import { pageNavigation } from "./other/navigation.js";
 
 export const initPageLoad = () => {
   createLoading();
   getProductCategories();
   getProducts();
+  pageNavigation();
 };
