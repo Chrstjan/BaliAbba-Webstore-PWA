@@ -105,3 +105,14 @@ export const categoryCallback = (clickedCategory) => {
     }
   });
 };
+
+//This code works for going back to the sup + sub category view!
+export const subCategoryCallback = (clickedSubCategory) => {
+  console.log(clickedSubCategory);
+
+  supCategoryArray.map((subCat) => {
+    if (subCat.subCategory.includes(clickedSubCategory)) {
+      buildCategoriesCard(subCat);
+    }
+  });
+};

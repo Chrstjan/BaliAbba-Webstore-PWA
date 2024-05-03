@@ -1,4 +1,7 @@
-import { productCardCallback } from "./receivedProducts.js";
+import {
+  categoryProductCallback,
+  productCardCallback,
+} from "./receivedProducts.js";
 let cardsContainer = document.getElementById("app");
 
 export const buildProductsCards = (featuredProducts) => {
@@ -44,6 +47,19 @@ export const buildProductDetailsCard = (product) => {
   clearApp();
 
   console.log(product);
+  const backBtnContainer = `
+    <span class="back-btn-container">
+        <button class="back-btn">&#8592</button>
+    </span>`;
+
+  cardsContainer.innerHTML += backBtnContainer;
+
+  const backBtn = document.querySelector(".back-btn");
+  backBtn.addEventListener("click", () => {
+    console.log(product);
+    categoryProductCallback(product.category);
+  });
+
   const randRatingsAmount = Math.floor(Math.random() * 3500 + 1);
   let productDetailFigure = document.createElement("figure");
   productDetailFigure.classList.add("product-detail-card");
@@ -53,8 +69,6 @@ export const buildProductDetailsCard = (product) => {
   product.images.map((img) => {
     productImages += `<img class="small-img" src="${img}" />`;
   });
-
-  console.log(productImages);
 
   let productDetailFigureContent = `
             <header class="product-name">
