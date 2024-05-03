@@ -6,6 +6,8 @@ import {
 let allProductsArray;
 export let featuredProductsArray = [];
 
+//product cards view code should be move into own files and functions!
+
 export const receivedProducts = (productsData) => {
   allProductsArray = productsData.products;
 
@@ -14,7 +16,6 @@ export const receivedProducts = (productsData) => {
     allProductsArray[Math.floor(Math.random() * allProductsArray.length)],
     allProductsArray[Math.floor(Math.random() * allProductsArray.length)]
   );
-
   buildProductsCards(featuredProductsArray);
 };
 
