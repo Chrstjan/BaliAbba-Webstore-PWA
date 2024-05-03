@@ -1,5 +1,7 @@
-import { buildAllCategories } from "../categories/buildCategoriesCards.js";
+import { featuredProductsArray } from "../products/receivedProducts.js";
+import { buildProductsCards } from "../products/buildProductCards.js";
 import { categoryCallback } from "../categories/receivedCategories.js";
+import { buildAllCategories } from "../categories/buildCategoriesCards.js";
 
 const sidebarParentContainer = document.getElementById("app");
 
@@ -45,6 +47,11 @@ export const buildSidebar = async (categories) => {
 
   sidebarContainer.innerHTML = sidebarContent;
   sidebarParentContainer.appendChild(sidebarContainer);
+
+  const homeBtn = document.getElementById("home-btn");
+  homeBtn.addEventListener("click", () => {
+    buildProductsCards(featuredProductsArray);
+  });
 
   const allCategoriesBtn = document.getElementById("categories");
   allCategoriesBtn.addEventListener("click", () => {

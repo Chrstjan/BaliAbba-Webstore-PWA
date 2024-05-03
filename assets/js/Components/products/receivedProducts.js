@@ -4,7 +4,7 @@ import {
 } from "./buildProductCards.js";
 
 let allProductsArray;
-let featuredProductsArray = [];
+export let featuredProductsArray = [];
 
 export const receivedProducts = (productsData) => {
   allProductsArray = productsData.products;
