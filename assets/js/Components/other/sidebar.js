@@ -27,6 +27,8 @@ export const buildSidebar = async (categories) => {
         </ul>
         <ul class="categories-nav">`;
 
+  //Searchbar will be made here!
+
   categories.map((category) => {
     sidebarContent += `
                 <ul class="sup-category">
