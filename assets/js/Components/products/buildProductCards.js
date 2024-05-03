@@ -1,3 +1,4 @@
+import { subCategoryCallback } from "../categories/receivedCategories.js";
 import {
   categoryProductCallback,
   productCardCallback,
@@ -8,6 +9,14 @@ export const buildProductsCards = (featuredProducts) => {
   clearApp();
 
   console.log(featuredProducts);
+
+  const categoryBackBtnContainer = `
+    <span class="category-back-btn">
+      <button class="category-back-btn">&#8592</button>
+    </span>`;
+
+  cardsContainer.innerHTML += categoryBackBtnContainer;
+
   const randRatingsAmount = Math.floor(Math.random() * 3500 + 1);
   featuredProducts.map((products) => {
     let productFigure = document.createElement("figure");
@@ -40,6 +49,11 @@ export const buildProductsCards = (featuredProducts) => {
             </figcaption>`;
     productFigure.innerHTML += productFigureContent;
     cardsContainer.appendChild(productFigure);
+  });
+
+  const categoryBackBtn = document.querySelector(".category-back-btn");
+  categoryBackBtn.addEventListener("click", () => {
+    subCategoryCallback(featuredProducts[0].category);
   });
 };
 

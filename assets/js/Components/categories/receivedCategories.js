@@ -96,7 +96,7 @@ export const receivedCategories = async (categories) => {
   });
 };
 
-export const categoryCallback = (clickedCategory) => {
+export const supCategoryCallback = (clickedCategory) => {
   console.log(clickedCategory);
 
   supCategoryArray.map((supCat) => {
@@ -106,7 +106,6 @@ export const categoryCallback = (clickedCategory) => {
   });
 };
 
-//This code works for going back to the sup + sub category view!
 export const subCategoryCallback = (clickedSubCategory) => {
   console.log(clickedSubCategory);
 
