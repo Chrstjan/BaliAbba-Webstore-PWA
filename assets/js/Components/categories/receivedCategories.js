@@ -3,7 +3,7 @@ import { buildCategoriesCard } from "./buildCategoriesCards.js";
 
 const sidebarBtn = document.getElementById("hamburger");
 
-let supCategoryArray;
+export let supCategoryArray;
 let eletronicArray = [];
 let homeDecorArray = [];
 let clothesArray = [];

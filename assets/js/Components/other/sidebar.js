@@ -1,5 +1,6 @@
 import { featuredProductsArray } from "../products/receivedProducts.js";
 import { buildFeaturedProductsCards } from "../products/buildFeaturedProductsCards.js";
+import { searchProduct } from "./searchbar.js";
 import { supCategoryCallback } from "../categories/receivedCategories.js";
 import { buildAllCategories } from "../categories/buildCategoriesCards.js";
 
@@ -25,9 +26,11 @@ export const buildSidebar = async (categories) => {
             <li><button id="categories">Categories</button></li>
             <li><button id="login">Login</button></li>
         </ul>
+        <div class="searchbar-container">
+              <input type="text" id="searchbar" placeholder="Search product..." />
+              <span class="search-result-container"></span>
+        </div>
         <ul class="categories-nav">`;
-
-  //Searchbar will be made here!
 
   categories.map((category) => {
     sidebarContent += `
@@ -66,5 +69,17 @@ export const buildSidebar = async (categories) => {
       const clickedCategory = item.dataset.category;
       supCategoryCallback(clickedCategory);
     });
+  });
+
+  const searchBarElement = document.getElementById("searchbar");
+  let timeoutId;
+
+  searchBarElement.addEventListener("input", () => {
+    clearTimeout(timeoutId);
+
+    timeoutId = setTimeout(() => {
+      const userSearch = searchBarElement.value;
+      searchProduct(userSearch);
+    }, 700);
   });
 };

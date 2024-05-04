@@ -2,7 +2,7 @@ import { buildFeaturedProductsCards } from "./buildFeaturedProductsCards.js";
 import { buildProductsCards } from "./buildProductCards.js";
 import { buildProductDetailsCard } from "./buildProductDetailsCard.js";
 
-let allProductsArray;
+export let allProductsArray;
 export let featuredProductsArray = [];
 
 export const receivedProducts = (productsData) => {
