@@ -1,4 +1,7 @@
-import { productCardCallback } from "./receivedProducts.js";
+import {
+  productCardCallback,
+  filteredProductsCallback,
+} from "./receivedProducts.js";
 import { subCategoryCallback } from "../categories/receivedCategories.js";
 
 let cardsContainer = document.getElementById("app");
@@ -14,6 +17,20 @@ export const buildProductsCards = (featuredProducts) => {
     </span>`;
 
   cardsContainer.innerHTML += categoryBackBtnContainer;
+
+  const productsSortingContainer = `
+    <div class="sorting-container">
+      <select id="products-filter">
+        <option disabled selected hidden>Filter</option>
+        <option class="product-filter-option" data-filterOption="${featuredProducts.bestseller}">Bestsellers</option>
+        <option class="product-filter-option" data-filterOption="${featuredProducts.price}">Price: low - high</option>
+        <option class="product-filter-option" data-filterOption="${featuredProducts.highPrice}"}">Price: high - low</option>
+        <option class="product-filter-option" data-filterOption="${featuredProducts.stock}">High stock</option>
+        <option class="product-filter-option" data-filterOption="${featuredProducts.lowStock}">Low stock</option>
+      </select>
+    </div>`;
+
+  cardsContainer.innerHTML += productsSortingContainer;
 
   featuredProducts.map((products) => {
     let productFigure = document.createElement("figure");
@@ -51,6 +68,12 @@ export const buildProductsCards = (featuredProducts) => {
   const categoryBackBtn = document.querySelector(".category-back-btn");
   categoryBackBtn.addEventListener("click", () => {
     subCategoryCallback(featuredProducts[0].category);
+  });
+
+  const filteredSelectOption = document.getElementById("products-filter");
+  filteredSelectOption.addEventListener("change", (e) => {
+    const clickedOption = e.target.value;
+    filteredProductsCallback(clickedOption);
   });
 };
 

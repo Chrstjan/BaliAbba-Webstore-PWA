@@ -23,6 +23,12 @@ export const receivedProducts = (productsData) => {
     } else {
       products.bestseller = false;
     }
+
+    if (products.price >= 50) {
+      products.highPrice = true;
+    } else {
+      products.highPrice = false;
+    }
   });
 
   featuredProductsArray.push(
@@ -50,4 +56,14 @@ export const categoryProductCallback = (clickedSubCategory) => {
       buildProductsCards(subCategoriesArray);
     }
   });
+};
+
+export const filteredProductsCallback = (clickedFilter) => {
+  console.log(clickedFilter);
+  allProductsArray.map((allProducts) => {
+    // if (allProducts.includes(clickedFilter)) {
+    //   console.log(allProducts);
+    // }
+  });
+  console.log(allProductsArray);
 };
