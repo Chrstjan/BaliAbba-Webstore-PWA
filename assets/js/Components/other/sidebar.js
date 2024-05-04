@@ -1,6 +1,6 @@
 import { featuredProductsArray } from "../products/receivedProducts.js";
 import { buildFeaturedProductsCards } from "../products/buildFeaturedProductsCards.js";
-import { searchProduct } from "./searchbar.js";
+import { searchProduct } from "../searchbar/getSearchResult.js";
 import { supCategoryCallback } from "../categories/receivedCategories.js";
 import { buildAllCategories } from "../categories/buildCategoriesCards.js";
 

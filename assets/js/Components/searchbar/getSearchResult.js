@@ -7,4 +7,13 @@ export const searchProduct = (userSearch) => {
       console.log(allProducts);
     }
   });
+
+  supCategoryArray.map((categories) => {
+    if (
+      categories.supCategory.includes(userSearch) ||
+      categories.subCategory.includes(userSearch)
+    ) {
+      console.log(categories);
+    }
+  });
 };
