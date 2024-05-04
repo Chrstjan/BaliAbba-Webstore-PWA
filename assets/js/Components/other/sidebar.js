@@ -28,7 +28,7 @@ export const buildSidebar = async (categories) => {
         </ul>
         <div class="searchbar-container">
               <input type="text" id="searchbar" placeholder="Search product..." />
-              <span class="search-result-container"></span>
+              <div id="search-result-container" class="search-result-container"></div>
         </div>
         <ul class="categories-nav">`;
 
@@ -79,6 +79,10 @@ export const buildSidebar = async (categories) => {
 
     timeoutId = setTimeout(() => {
       const userSearch = searchBarElement.value;
+      if (userSearch.value === "") {
+        document.getElementById("search-result-container").innerHTML = "";
+        return;
+      }
       searchProduct(userSearch);
     }, 700);
   });
