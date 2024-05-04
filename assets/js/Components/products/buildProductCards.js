@@ -23,8 +23,10 @@ export const buildProductsCards = (featuredProducts) => {
       <select id="products-filter">
         <option disabled selected hidden>Filter</option>
         <option class="product-filter-option" data-filterOption="${featuredProducts.bestseller}">Bestsellers</option>
-        <option class="product-filter-option" data-filterOption="${featuredProducts.price}">Price: low - high</option>
-        <option class="product-filter-option" data-filterOption="${featuredProducts.highPrice}"}">Price: high - low</option>
+        <option class="product-filter-option" data-filterOption="${featuredProducts.price}">Price: Low</option>
+        <option class="product-filter-option" data-filterOption="${featuredProducts.highPrice}"}">Price: High</option>
+        <option class="product-filter-option" data-filterOption="${featuredProducts.price}">Price: Low - High</option>
+        <option class="product-filter-option" data-filterOption="${featuredProducts.highPrice}">Price: High - Low</option>
         <option class="product-filter-option" data-filterOption="${featuredProducts.stock}">High stock</option>
         <option class="product-filter-option" data-filterOption="${featuredProducts.lowStock}">Low stock</option>
       </select>
