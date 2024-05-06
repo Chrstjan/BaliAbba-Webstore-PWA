@@ -5,6 +5,7 @@ import {
 import { subCategoryCallback } from "../categories/receivedCategories.js";
 
 let cardsContainer = document.getElementById("app");
+let clickedOption;
 
 export const buildProductsCards = (featuredProducts) => {
   clearApp();
@@ -21,14 +22,14 @@ export const buildProductsCards = (featuredProducts) => {
   const productsSortingContainer = `
     <div class="sorting-container">
       <select id="products-filter">
-        <option disabled selected hidden>Filter</option>
-        <option class="product-filter-option" data-filterOption="${featuredProducts.bestseller}">Bestsellers</option>
-        <option class="product-filter-option" data-filterOption="${featuredProducts.price}">Price: Low</option>
-        <option class="product-filter-option" data-filterOption="${featuredProducts.highPrice}"}">Price: High</option>
-        <option class="product-filter-option" data-filterOption="${featuredProducts.price}">Price: Low - High</option>
-        <option class="product-filter-option" data-filterOption="${featuredProducts.highPrice}">Price: High - Low</option>
-        <option class="product-filter-option" data-filterOption="${featuredProducts.stock}">High stock</option>
-        <option class="product-filter-option" data-filterOption="${featuredProducts.lowStock}">Low stock</option>
+        <option id="filter-name" disabled selected hidden>Filter</option>
+        <option class="product-filter-option">Bestsellers</option>
+        <option class="product-filter-option">Price: Low</option>
+        <option class="product-filter-option">Price: High</option>
+        <option class="product-filter-option">Price: Low - High</option>
+        <option class="product-filter-option">Price: High - Low</option>
+        <option class="product-filter-option">High stock</option>
+        <option class="product-filter-option">Low stock</option>
       </select>
     </div>`;
 
@@ -74,8 +75,10 @@ export const buildProductsCards = (featuredProducts) => {
 
   const filteredSelectOption = document.getElementById("products-filter");
   filteredSelectOption.addEventListener("change", (e) => {
-    const clickedOption = e.target.value;
+    clickedOption = e.target.value;
     filteredProductsCallback(clickedOption);
+    let newOptionName = document.getElementById("filter-name");
+    newOptionName.innerHTML = e.target.value; //Sets the default value of the select option to the clicked filter (needs to be saved in session storage)
   });
 };
 
