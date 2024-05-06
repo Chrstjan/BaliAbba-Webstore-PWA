@@ -1,6 +1,9 @@
 import { featuredProductsArray } from "../products/receivedProducts.js";
 import { buildFeaturedProductsCards } from "../products/buildFeaturedProductsCards.js";
-import { searchProduct } from "../searchbar/getSearchResult.js";
+import {
+  searchProduct,
+  productsCategoriesArray,
+} from "../searchbar/getSearchResult.js";
 import { supCategoryCallback } from "../categories/receivedCategories.js";
 import { buildAllCategories } from "../categories/buildCategoriesCards.js";
 
@@ -28,7 +31,8 @@ export const buildSidebar = async (categories) => {
         </ul>
         <div class="searchbar-container">
               <input type="text" id="searchbar" placeholder="Search product..." />
-              <div id="search-result-container" class="search-result-container"></div>
+              <div class="search-result-container">
+              </div>
         </div>
         <ul class="categories-nav">`;
 
@@ -79,11 +83,32 @@ export const buildSidebar = async (categories) => {
 
     timeoutId = setTimeout(() => {
       const userSearch = searchBarElement.value;
-      if (userSearch.value === "") {
-        document.getElementById("search-result-container").innerHTML = "";
+
+      searchProduct(userSearch);
+
+      let searchResultContainer = document.querySelector(
+        ".search-result-container"
+      );
+
+      if (userSearch.trim() === "") {
+        searchResultContainer.innerHTML = "";
         return;
       }
-      searchProduct(userSearch);
+
+      searchResultContainer.innerHTML = "";
+
+      productsCategoriesArray.map((products) => {
+        console.log(products);
+        let searchResult = `
+                    <figure>
+                      <img class="product-search" src="${products.thumbnail}" alt="${products.title}"/>
+                      <header>
+                        <h4 class="product-search-title">${products.title}</h4>
+                      </header>
+                    </figure>`;
+
+        searchResultContainer.innerHTML += searchResult;
+      });
     }, 700);
   });
 };

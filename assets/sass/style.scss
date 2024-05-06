@@ -98,7 +98,6 @@
 
   .sidebar-nav {
     @include flexContainer(column);
-    gap: 2rem;
 
     ul {
       margin: 0;
@@ -117,12 +116,11 @@
         padding: 0.2rem 0.4rem;
       }
     }
-
+    //#region top nav
     .top-nav {
       @include flexContainer(row);
       gap: 0.5rem;
       padding: 0.6rem 0rem 0.6rem 0rem;
-      border-bottom: 4px solid #000;
       //Temp background
       background: #1c1c1c;
       width: 100%;
@@ -135,7 +133,37 @@
         font-size: 20px;
       }
     }
+    //#endregion top nav
 
+    //#region mid nav
+    .searchbar-container {
+      @include flexContainer(column);
+      width: 100%;
+      background: #1c1c1c;
+      margin-bottom: 1rem;
+      padding: 0.4rem 0rem;
+
+      #searchbar {
+        border: 0;
+        border-radius: 12px;
+        padding: 0.3rem 0.6rem;
+      }
+
+      .search-result-container {
+        @include flexContainer(column);
+        gap: 0.5rem;
+        overflow-y: scroll;
+
+        figure {
+          img {
+            width: 20vw;
+          }
+        }
+      }
+    }
+    //#endregion mid nav
+
+    //#region bottom nav
     .categories-nav {
       @include flexContainer(column);
       gap: 0.7rem;
@@ -144,6 +172,7 @@
         font-size: 23px;
       }
     }
+    //#endregion bottom nav
   }
 }
 /*#endregion sidebar */

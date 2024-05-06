@@ -1,8 +1,10 @@
 import { allProductsArray } from "../products/receivedProducts.js";
 import { supCategoryArray } from "../categories/receivedCategories.js";
-import { buildSidebar } from "../other/sidebar.js";
+
+export let productsCategoriesArray = [];
 
 export const searchProduct = (userSearch) => {
+  productsCategoriesArray = [];
   let searchedProductsArray = [];
   let searchedCategoriesArray = [];
 
@@ -21,7 +23,8 @@ export const searchProduct = (userSearch) => {
     }
   });
 
-  const productsCategoriesArray = [
+  productsCategoriesArray = [
+    ...productsCategoriesArray,
     ...searchedProductsArray,
     ...searchedCategoriesArray,
   ];
