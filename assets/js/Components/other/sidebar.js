@@ -100,7 +100,7 @@ export const buildSidebar = async (categories) => {
       productsCategoriesArray.map((products) => {
         console.log(products);
         let searchResult = `
-                    <figure>
+                    <figure class="searched-product-figure" data-productId="${products.id}">
                       <img class="product-search" src="${products.thumbnail}" alt="${products.title}"/>
                       <header>
                         <h4 class="product-search-title">${products.title}</h4>
@@ -108,6 +108,16 @@ export const buildSidebar = async (categories) => {
                     </figure>`;
 
         searchResultContainer.innerHTML += searchResult;
+      });
+
+      const searchedProductElements = document.querySelectorAll(
+        ".searched-product-figure"
+      );
+      searchedProductElements.forEach((element) => {
+        element.addEventListener("click", () => {
+          const clickedElement = element.dataset.productId;
+          console.log(clickedElement);
+        });
       });
     }, 700);
   });

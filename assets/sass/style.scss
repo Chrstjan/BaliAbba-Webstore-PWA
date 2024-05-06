@@ -155,6 +155,7 @@
         overflow-y: scroll;
 
         figure {
+          @include flexContainer(column);
           img {
             width: 20vw;
           }
