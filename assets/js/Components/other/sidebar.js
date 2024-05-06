@@ -1,4 +1,7 @@
-import { featuredProductsArray } from "../products/receivedProducts.js";
+import {
+  featuredProductsArray,
+  productCardCallback,
+} from "../products/receivedProducts.js";
 import { buildFeaturedProductsCards } from "../products/buildFeaturedProductsCards.js";
 import {
   searchProduct,
@@ -99,24 +102,21 @@ export const buildSidebar = async (categories) => {
 
       productsCategoriesArray.map((products) => {
         console.log(products);
+        let searchResultFigure = document.createElement("figure");
+        searchResultFigure.classList.add("search-result-figure");
+
         let searchResult = `
-                    <figure class="searched-product-figure" data-productId="${products.id}">
-                      <img class="product-search" src="${products.thumbnail}" alt="${products.title}"/>
-                      <header>
-                        <h4 class="product-search-title">${products.title}</h4>
-                      </header>
-                    </figure>`;
+          <img class="product-search" src="${products.thumbnail}" alt="${products.title}"/>
+          <header>
+            <h4 class="product-search-title">${products.title}</h4>
+          </header>`;
+        searchResultFigure.innerHTML += searchResult;
+        searchResultContainer.appendChild(searchResultFigure);
 
-        searchResultContainer.innerHTML += searchResult;
-      });
-
-      const searchedProductElements = document.querySelectorAll(
-        ".searched-product-figure"
-      );
-      searchedProductElements.forEach((element) => {
-        element.addEventListener("click", () => {
-          const clickedElement = element.dataset.productId;
-          console.log(clickedElement);
+        searchResultFigure.addEventListener("click", () => {
+          const productId = products.id;
+          console.log(productId);
+          productCardCallback(productId);
         });
       });
     }, 700);
