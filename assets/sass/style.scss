@@ -156,8 +156,20 @@
 
         figure {
           @include flexContainer(column);
+
           img {
             width: 20vw;
+          }
+        }
+
+        .search-result-category {
+          @include flexContainer(column);
+
+          .sub-category-container {
+            ul {
+              @include flexContainer(column);
+              gap: 0.5rem;
+            }
           }
         }
       }

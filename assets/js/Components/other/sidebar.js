@@ -102,22 +102,54 @@ export const buildSidebar = async (categories) => {
 
       productsCategoriesArray.map((products) => {
         console.log(products);
-        let searchResultFigure = document.createElement("figure");
-        searchResultFigure.classList.add("search-result-figure");
+        if (products.thumbnail) {
+          let searchResultFigure = document.createElement("figure");
+          searchResultFigure.classList.add("search-result-figure");
 
-        let searchResult = `
+          let searchResult = `
           <img class="product-search" src="${products.thumbnail}" alt="${products.title}"/>
           <header>
             <h4 class="product-search-title">${products.title}</h4>
           </header>`;
-        searchResultFigure.innerHTML += searchResult;
-        searchResultContainer.appendChild(searchResultFigure);
+          searchResultFigure.innerHTML += searchResult;
+          searchResultContainer.appendChild(searchResultFigure);
 
-        searchResultFigure.addEventListener("click", () => {
-          const productId = products.id;
-          console.log(productId);
-          productCardCallback(productId);
-        });
+          searchResultFigure.addEventListener("click", () => {
+            const productId = products.id;
+            console.log(productId);
+            productCardCallback(productId);
+          });
+        } else {
+          let searchResultCategory = document.createElement("div");
+          searchResultCategory.classList.add("search-result-category");
+
+          let searchResult = `
+            <header>
+              <h3>${products.supCategory}</h3>
+            </header>`;
+
+          searchResultCategory.innerHTML += searchResult;
+
+          let subCategoriesContainer = document.createElement("span");
+          subCategoriesContainer.classList.add("sub-category-container");
+
+          subCategoriesContainer.innerHTML += `
+            <ul>
+              ${products.subCategory
+                .map(
+                  (subCat) =>
+                    `<li class="sub-category-list-item">${subCat}</li>`
+                )
+                .join("")}
+            </ul>`;
+
+          searchResultCategory.appendChild(subCategoriesContainer);
+          searchResultContainer.appendChild(searchResultCategory);
+
+          searchResultCategory.addEventListener("click", () => {
+            supCategoryCallback(products.supCategory);
+          });
+        }
       });
     }, 700);
   });

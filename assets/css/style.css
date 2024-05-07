@@ -168,6 +168,19 @@
 #app #sidebar.show-sidebar .sidebar-nav .searchbar-container .search-result-container figure img {
   width: 20vw;
 }
+#app #sidebar.show-sidebar .sidebar-nav .searchbar-container .search-result-container .search-result-category {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#app #sidebar.show-sidebar .sidebar-nav .searchbar-container .search-result-container .search-result-category .sub-category-container ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
 #app #sidebar.show-sidebar .sidebar-nav .categories-nav {
   display: flex;
   flex-direction: column;
