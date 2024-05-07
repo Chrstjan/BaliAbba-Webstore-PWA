@@ -9,15 +9,15 @@ export const searchProduct = (userSearch) => {
   let searchedCategoriesArray = [];
 
   allProductsArray.map((allProducts) => {
-    if (allProducts.title.includes(userSearch)) {
+    if (allProducts.title.toLowerCase().includes(userSearch.toLowerCase())) {
       searchedProductsArray.push(allProducts);
     }
   });
 
   supCategoryArray.map((categories) => {
     if (
-      categories.supCategory.includes(userSearch) ||
-      categories.subCategory.includes(userSearch)
+      categories.supCategory.toLowerCase().includes(userSearch.toLowerCase()) ||
+      categories.subCategory.includes(userSearch.toLowerCase())
     ) {
       searchedCategoriesArray.push(categories);
     }

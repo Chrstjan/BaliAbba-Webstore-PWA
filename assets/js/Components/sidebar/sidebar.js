@@ -3,10 +3,7 @@ import {
   productCardCallback,
 } from "../products/receivedProducts.js";
 import { buildFeaturedProductsCards } from "../products/buildFeaturedProductsCards.js";
-import {
-  searchProduct,
-  productsCategoriesArray,
-} from "../searchbar/getSearchResult.js";
+import { searchProduct, productsCategoriesArray } from "./getSearchResult.js";
 import { supCategoryCallback } from "../categories/receivedCategories.js";
 import { buildAllCategories } from "../categories/buildCategoriesCards.js";
 

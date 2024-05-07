@@ -1,4 +1,4 @@
-import { buildSidebar } from "../other/sidebar.js";
+import { buildSidebar } from "../sidebar/sidebar.js";
 import { buildCategoriesCard } from "./buildCategoriesCards.js";
 
 const sidebarBtn = document.getElementById("hamburger");
