@@ -1,6 +1,7 @@
 import { buildFeaturedProductsCards } from "./buildFeaturedProductsCards.js";
 import { buildProductsCards } from "./buildProductCards.js";
 import { buildProductDetailsCard } from "./buildProductDetailsCard.js";
+import { addToShoppingCart } from "../shopping cart/shoppingCart.js";
 
 export let allProductsArray;
 export let featuredProductsArray = [];
@@ -56,6 +57,15 @@ export const productCardCallback = (clickedProduct) => {
   allProductsArray.map((allProducts) => {
     if (allProducts.id === clickedProduct) {
       buildProductDetailsCard(allProducts);
+    }
+  });
+};
+
+export const productCardCartBtnCallback = (clickedProduct) => {
+  console.log(clickedProduct);
+  allProductsArray.map((allProducts) => {
+    if (allProducts.id === clickedProduct) {
+      addToShoppingCart(allProducts);
     }
   });
 };

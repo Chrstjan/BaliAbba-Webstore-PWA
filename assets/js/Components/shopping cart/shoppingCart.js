@@ -22,3 +22,13 @@ export const initializeShoppingCart = () => {
     //function to update products amount to length of the array in the data object here
   }
 };
+
+export const addToShoppingCart = (productId) => {
+  let shoppingCart = getShoppingCart();
+
+  shoppingCart.products.push(productId);
+
+  //Code to update basket amount here
+
+  saveShoppingCartData(shoppingCart);
+};

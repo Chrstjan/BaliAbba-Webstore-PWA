@@ -1,5 +1,6 @@
 import {
   productCardCallback,
+  productCardCartBtnCallback,
   filteredProductsCallback,
 } from "./receivedProducts.js";
 import { subCategoryCallback } from "../categories/receivedCategories.js";
@@ -57,7 +58,7 @@ export const buildProductsCards = (featuredProducts) => {
                 </span>
                 <div class="button-container">
                     <h3>${products.price} $</h3>
-                    <button>Add to cart</button>
+                    <button class="add-to-cart" data-productId="${products.id}">Add to cart</button>
                 </div>
                 <footer class="product-description">
                     <h4>${products.description}</h4>
@@ -66,6 +67,15 @@ export const buildProductsCards = (featuredProducts) => {
             </figcaption>`;
     productFigure.innerHTML += productFigureContent;
     cardsContainer.appendChild(productFigure);
+  });
+
+  const addToCartBtn = document.querySelectorAll(".add-to-cart");
+  addToCartBtn.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      const clickedProductId = e.currentTarget.getAttribute("data-productId");
+      let parsedProductId = parseInt(clickedProductId);
+      productCardCartBtnCallback(parsedProductId);
+    });
   });
 
   const categoryBackBtn = document.querySelector(".category-back-btn");

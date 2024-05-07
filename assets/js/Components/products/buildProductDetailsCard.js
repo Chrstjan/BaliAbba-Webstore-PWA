@@ -1,4 +1,7 @@
-import { categoryProductCallback } from "./receivedProducts.js";
+import {
+  productCardCartBtnCallback,
+  categoryProductCallback,
+} from "./receivedProducts.js";
 
 let cardsContainer = document.getElementById("app");
 
@@ -46,7 +49,7 @@ export const buildProductDetailsCard = (product) => {
                 </span>
                 <div class="button-container">
                     <h3>${product.price} $</h3>
-                    <button>Add to cart</button>
+                    <button class="add-to-cart">Add to cart</button>
                 </div>
                 <footer class="product-description">
                     <h4>${product.description}</h4>
@@ -56,6 +59,11 @@ export const buildProductDetailsCard = (product) => {
 
   productDetailFigure.innerHTML += productDetailFigureContent;
   cardsContainer.appendChild(productDetailFigure);
+
+  const productCartBtn = document.querySelector(".add-to-cart");
+  productCartBtn.addEventListener("click", () => {
+    productCardCartBtnCallback(product.id);
+  });
 };
 
 const clearApp = () => {
