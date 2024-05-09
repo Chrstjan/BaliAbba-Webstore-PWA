@@ -6,7 +6,10 @@ import {
 export const initializeShoppingCart = () => {
   let shoppingCart = getShoppingCart();
 
-  if (!shoppingCart) {
+  if (shoppingCart) {
+    updateCartIcon(shoppingCart.products.length);
+    shoppingCart.total = shoppingCart.products.length;
+  } else {
     console.log("No Shopping Cart!!");
 
     let newShoppingCart = {
@@ -14,12 +17,10 @@ export const initializeShoppingCart = () => {
       total: 0,
     };
 
-    //function to update products amount to 0 here
     saveShoppingCartData(newShoppingCart);
-  } else {
-    let ShoppingCartData = JSON.parse(shoppingCart);
 
-    //function to update products amount to length of the array in the data object here
+    newShoppingCart.total = newShoppingCart.products.length;
+    updateCartIcon(0);
   }
 };
 
@@ -27,8 +28,15 @@ export const addToShoppingCart = (productId) => {
   let shoppingCart = getShoppingCart();
 
   shoppingCart.products.push(productId);
+  shoppingCart.total++;
+  console.log(shoppingCart);
 
-  //Code to update basket amount here
+  updateCartIcon(shoppingCart.products.length);
 
   saveShoppingCartData(shoppingCart);
+};
+
+const updateCartIcon = (items) => {
+  let cartAmountElement = document.getElementById("basket-amount");
+  cartAmountElement.innerHTML = items;
 };

@@ -308,6 +308,10 @@
 }
 
 /*#endregion category cards  */
+#app .filled-container header img {
+  width: 10vw;
+}
+
 /*#endregion app  */
 /*#region footer*/
 .main-footer {

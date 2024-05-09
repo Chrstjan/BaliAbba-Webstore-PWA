@@ -33,6 +33,41 @@ export const buildShoppingCart = () => {
     return;
   }
   console.log("Shopping!!!!");
+  shoppingCartData.products.map((products) => {
+    let filledShoppingCartContainer = `
+      <figure class="filled-container">
+        <header>
+          <img src="${products.thumbnail}" alt="${products.title}" />
+          <span class="product-name-container">
+            <h3>${products.title}</h3>
+            <p>${products.brand}</p>
+          </span>
+        </header>
+        <figcaption>
+          <p>${products.description}</p>
+          <div class="user-rating-container">
+            <span class="star-rating-container">
+              <p>${products.rating}</p>
+              <p>★</p>
+            </span>
+            <p>(${products.ratingsAmount} reviews)</p>
+          </div>
+          <div class="product-amount-container">
+            <button class="subtrack-amount-btn">+</button>
+            <p>1</p>
+            <button class="add-amount-btn">-</button>
+          </div>
+          <span class="price-container">
+            <h5>${products.price} $</h5>
+          </span>
+          <footer>
+            
+          </footer>
+        </figcaption>
+      </figure>`;
+
+    shoppingCartContainer.innerHTML += filledShoppingCartContainer;
+  });
 };
 
 const clearApp = () => {
