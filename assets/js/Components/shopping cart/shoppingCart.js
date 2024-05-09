@@ -9,6 +9,10 @@ export const initializeShoppingCart = () => {
   if (shoppingCart) {
     updateCartIcon(shoppingCart.products.length);
     shoppingCart.total = shoppingCart.products.length;
+
+    shoppingCart.products.map((products) => {
+      products.productAmount = 1;
+    });
   } else {
     console.log("No Shopping Cart!!");
 
@@ -21,10 +25,18 @@ export const initializeShoppingCart = () => {
 
     newShoppingCart.total = newShoppingCart.products.length;
     updateCartIcon(0);
+
+    newShoppingCart.products.map((products) => {
+      products.productAmount = 1;
+    });
   }
 };
 
 export const addToShoppingCart = (productId) => {
+  console.log(productId);
+
+  productId.productAmount = 1;
+
   let shoppingCart = getShoppingCart();
 
   shoppingCart.products.push(productId);

@@ -32,6 +32,16 @@ export const buildShoppingCart = () => {
     });
     return;
   }
+  shoppingCartData.products = shoppingCartData.products.reduce((acc, item) => {
+    const existingProductIndex = acc.findIndex((i) => i.id === item.id);
+    if (existingProductIndex !== -1) {
+      acc[existingProductIndex].productAmount += item.productAmount;
+    } else {
+      acc.push(item);
+    }
+    return acc;
+  }, []);
+
   console.log("Shopping!!!!");
   shoppingCartData.products.map((products) => {
     let filledShoppingCartContainer = `
@@ -54,14 +64,14 @@ export const buildShoppingCart = () => {
           </div>
           <div class="product-amount-container">
             <button class="subtrack-amount-btn">+</button>
-            <p>1</p>
+            <p>${products.productAmount}</p>
             <button class="add-amount-btn">-</button>
           </div>
           <span class="price-container">
             <h5>${products.price} $</h5>
           </span>
           <footer>
-            
+
           </footer>
         </figcaption>
       </figure>`;
