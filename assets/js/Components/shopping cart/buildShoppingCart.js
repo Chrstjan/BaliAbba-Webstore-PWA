@@ -63,9 +63,9 @@ export const buildShoppingCart = () => {
             <p>(${products.ratingsAmount} reviews)</p>
           </div>
           <div class="product-amount-container">
-            <button class="subtrack-amount-btn">+</button>
+            <button class="subtrack-amount-btn" data-productAmount="${products.productAmount}">-</button>
             <p>${products.productAmount}</p>
-            <button class="add-amount-btn">-</button>
+            <button class="add-amount-btn" data-productAmount="${products.productAmount}">+</button>
           </div>
           <span class="price-container">
             <h5>${products.price} $</h5>
@@ -77,6 +77,25 @@ export const buildShoppingCart = () => {
       </figure>`;
 
     shoppingCartContainer.innerHTML += filledShoppingCartContainer;
+
+    const subtractProductsBtn = document.querySelectorAll(
+      ".subtrack-amount-btn"
+    );
+    subtractProductsBtn.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        const subtrackBtn = e.currentTarget.getAttribute("productAmount");
+        console.log(subtrackBtn);
+      });
+    });
+
+    const addProductsBtn = document.querySelectorAll(".add-amount-btn");
+    addProductsBtn.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        let addBtn = e.currentTarget.getAttribute("data-productAmount");
+        addBtn++;
+        console.log(addBtn);
+      });
+    });
   });
 };
 
