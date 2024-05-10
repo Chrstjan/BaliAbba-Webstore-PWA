@@ -6,12 +6,33 @@ import {
   productRemoveCallback,
 } from "../products/receivedProducts.js";
 import { buildFeaturedProductsCards } from "../products/buildFeaturedProductsCards.js";
+import { clearShoppingCart } from "./shoppingCart.js";
 
 const shoppingCartContainer = document.getElementById("app");
 const totalAmountContainer = document.createElement("div");
 
 export const buildShoppingCart = () => {
   let shoppingCartData = getShoppingCart();
+
+  let discountAmount = shoppingCartData.products.reduce((total, product) => {
+    return total + product.discountPercentage;
+  }, 0);
+
+  let discountDecimal = 1 - discountAmount / 100;
+
+  let productsDiscountPrice = shoppingCartData.products.reduce(
+    (total, product) =>
+      Math.floor(
+        total + product.price * product.productAmount * discountDecimal
+      ),
+    0
+  );
+
+  let productsTotalAmount = shoppingCartData.products.reduce(
+    (total, product) => total + product.price * product.productAmount,
+    0
+  );
+
   clearApp();
 
   console.log(shoppingCartData);
@@ -108,47 +129,47 @@ export const buildShoppingCart = () => {
     //#endregion event listeners
   });
 
-  let discountAmount = shoppingCartData.products.reduce((total, product) => {
-    return total + product.discountPercentage;
-  }, 0);
-
-  let discountDecimal = 1 - discountAmount / 100;
-  console.log(discountDecimal);
-
-  console.log(discountAmount);
-
-  let productsDiscountPrice = shoppingCartData.products.reduce(
-    (total, product) =>
-      Math.floor(
-        total + product.price * product.productAmount * discountDecimal
-      ),
-    0
-  );
-
-  console.log(productsDiscountPrice);
-
-  let productsTotalAmount = shoppingCartData.products.reduce(
-    (total, product) => total + product.price * product.productAmount,
-    0
-  );
-
-  console.log(productsTotalAmount);
-
   let totalAmountContent = `
-      <span class="price-container">
+    <span class="price-container">
+      <header class="products-price-container">
+        <h3>Price:</h3>
+        <p>${productsTotalAmount} $</p>
+      </header>
+      ${
+        productsTotalAmount >= 150
+          ? `
         <header class="discount-container">
-          <h3>Discount</h3>
+          <h3>Discount:</h3>
           <p>${discountAmount}%</p>
-        </header>
-
+        </header>`
+          : ""
+      }
         <header class="total-container">
           <h3>Total:</h3>
-          <p>${productsDiscountPrice} $</p>
+          <p>${
+            productsTotalAmount >= 150
+              ? productsDiscountPrice
+              : productsTotalAmount
+          }</p>
         </header>
-      </span>`;
+    </span>
+    <span class="checkout-container">
+      <button>Checkout</button>
+    </span>`;
+
+  let clearShoppingContainer = `
+    <div class="clear-cart-container">
+        <button id="clear-cart-btn" data-shoppingCart="${shoppingCartData.products}">Empty shopping cart</button>
+    </div>`;
 
   totalAmountContainer.innerHTML += totalAmountContent;
+  totalAmountContainer.innerHTML += clearShoppingContainer;
   shoppingCartContainer.appendChild(totalAmountContainer);
+
+  const clearShoppingCartBtn = document.getElementById("clear-cart-btn");
+  clearShoppingCartBtn.addEventListener("click", () => {
+    clearShoppingCart(shoppingCartData);
+  });
 };
 
 const clearApp = () => {

@@ -86,6 +86,8 @@ export const subtrackProductAmountCallback = (productAmount) => {
 
       if (product.productAmount <= 0) {
         shoppingCart.products.splice(product, 1);
+        shoppingCart.total--;
+
         saveShoppingCartData(shoppingCart);
         buildShoppingCart();
         updateCartIcon(shoppingCart.products.length);
@@ -129,8 +131,20 @@ export const removeProductCallback = (product) => {
     return;
   });
 
+  shoppingCart.total--;
+
   saveShoppingCartData(shoppingCart);
   updateCartIcon(shoppingCart.products.length);
   shoppingCart.total = shoppingCart.products.length;
   buildShoppingCart();
+};
+
+export const clearShoppingCart = (shoppingCart) => {
+  console.log(shoppingCart);
+  shoppingCart.products = [];
+  shoppingCart.total = 0;
+
+  saveShoppingCartData(shoppingCart);
+  buildShoppingCart();
+  updateCartIcon(shoppingCart.products.length);
 };
