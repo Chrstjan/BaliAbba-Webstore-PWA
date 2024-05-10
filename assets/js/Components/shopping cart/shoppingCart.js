@@ -40,13 +40,32 @@ export const addToShoppingCart = (productId) => {
 
   let shoppingCart = getShoppingCart();
 
-  shoppingCart.products.push(productId);
-  shoppingCart.total++;
-  console.log(shoppingCart);
+  const productAlreadyInCart = shoppingCart.products.some(
+    (product) => product.id === productId.id
+  );
 
-  updateCartIcon(shoppingCart.products.length);
+  if (!productAlreadyInCart) {
+    shoppingCart.products.push(productId);
+    shoppingCart.total++;
+    console.log(shoppingCart);
 
-  saveShoppingCartData(shoppingCart);
+    updateCartIcon(shoppingCart.products.length);
+
+    saveShoppingCartData(shoppingCart);
+  } else {
+    console.log("Product already in cart!!");
+    let newShoppingCart = getShoppingCart();
+    console.log(newShoppingCart);
+
+    newShoppingCart.products.forEach((product) => {
+      if (product.id === productId.id) {
+        console.log(product);
+        product.productAmount++;
+
+        saveShoppingCartData(newShoppingCart);
+      }
+    });
+  }
 };
 
 const updateCartIcon = (items) => {
@@ -73,5 +92,6 @@ export const removeProductCallback = (product) => {
 
   saveShoppingCartData(shoppingCart);
   updateCartIcon(shoppingCart.products.length);
+  shoppingCart.total = shoppingCart.products.length;
   buildShoppingCart();
 };
