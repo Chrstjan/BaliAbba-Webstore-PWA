@@ -1,6 +1,8 @@
 import { getShoppingCart } from "./shoppingCartLocalStorage.js";
 import {
   featuredProductsArray,
+  productAddAmountCallback,
+  productSubtractCallback,
   productRemoveCallback,
 } from "../products/receivedProducts.js";
 import { buildFeaturedProductsCards } from "../products/buildFeaturedProductsCards.js";
@@ -56,9 +58,9 @@ export const buildShoppingCart = () => {
             <p>(${products.ratingsAmount} reviews)</p>
           </div>
           <div class="product-amount-container">
-            <button class="subtrack-amount-btn" data-productAmount="${products.productAmount}">-</button>
+            <button class="subtrack-amount-btn" data-productAmount="${products.id}">-</button>
             <p>${products.productAmount}</p>
-            <button class="add-amount-btn" data-productAmount="${products.productAmount}">+</button>
+            <button class="add-amount-btn" data-productAmount="${products.id}">+</button>
             <span class="remove-product-container">
              <button class="remove-product-btn" data-productId="${products.id}">Remove product</button>
             </span>
@@ -73,6 +75,25 @@ export const buildShoppingCart = () => {
       </figure>`;
 
     shoppingCartContainer.innerHTML += filledShoppingCartContainer;
+
+    let subtractProductBtn = document.querySelectorAll(".subtrack-amount-btn");
+    subtractProductBtn.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        const subBtn = e.target.getAttribute("data-productAmount");
+        let parsedSubBtn = parseInt(subBtn);
+        productSubtractCallback(parsedSubBtn);
+      });
+    });
+
+    let addProductBtn = document.querySelectorAll(".add-amount-btn");
+    addProductBtn.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        const addBtn = e.target.getAttribute("data-productAmount");
+        let parsedAddBtn = parseInt(addBtn);
+        productAddAmountCallback(parsedAddBtn);
+      });
+    });
+
     let removeProductsBtn = document.querySelectorAll(".remove-product-btn");
     removeProductsBtn.forEach((btn) => {
       btn.addEventListener("click", (e) => {

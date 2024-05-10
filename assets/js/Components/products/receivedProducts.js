@@ -3,6 +3,8 @@ import { buildProductsCards } from "./buildProductCards.js";
 import { buildProductDetailsCard } from "./buildProductDetailsCard.js";
 import {
   addToShoppingCart,
+  addProductAmountCallback,
+  subtrackProductAmountCallback,
   removeProductCallback,
 } from "../shopping cart/shoppingCart.js";
 
@@ -59,6 +61,22 @@ export const productRemoveCallback = (productId) => {
   allProductsArray.map((allProducts) => {
     if (allProducts.id === productId) {
       removeProductCallback(allProducts);
+    }
+  });
+};
+
+export const productSubtractCallback = (productId) => {
+  allProductsArray.map((allProducts) => {
+    if (allProducts.id === productId) {
+      subtrackProductAmountCallback(allProducts);
+    }
+  });
+};
+
+export const productAddAmountCallback = (productId) => {
+  allProductsArray.map((allProducts) => {
+    if (allProducts.id === productId) {
+      addProductAmountCallback(allProducts);
     }
   });
 };
