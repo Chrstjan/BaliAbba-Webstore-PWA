@@ -1,7 +1,10 @@
 import { buildFeaturedProductsCards } from "./buildFeaturedProductsCards.js";
 import { buildProductsCards } from "./buildProductCards.js";
 import { buildProductDetailsCard } from "./buildProductDetailsCard.js";
-import { addToShoppingCart } from "../shopping cart/shoppingCart.js";
+import {
+  addToShoppingCart,
+  removeProductCallback,
+} from "../shopping cart/shoppingCart.js";
 
 export let allProductsArray;
 export let featuredProductsArray = [];
@@ -50,6 +53,14 @@ export const receivedProducts = (productsData) => {
     allProductsArray[Math.floor(Math.random() * allProductsArray.length)]
   );
   buildFeaturedProductsCards(featuredProductsArray);
+};
+
+export const productRemoveCallback = (productId) => {
+  allProductsArray.map((allProducts) => {
+    if (allProducts.id === productId) {
+      removeProductCallback(allProducts);
+    }
+  });
 };
 
 export const productCardCallback = (clickedProduct) => {

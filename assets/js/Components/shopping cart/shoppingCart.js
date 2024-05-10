@@ -2,6 +2,7 @@ import {
   getShoppingCart,
   saveShoppingCartData,
 } from "./shoppingCartLocalStorage.js";
+import { buildShoppingCart } from "./buildShoppingCart.js";
 
 export const initializeShoppingCart = () => {
   let shoppingCart = getShoppingCart();
@@ -51,4 +52,26 @@ export const addToShoppingCart = (productId) => {
 const updateCartIcon = (items) => {
   let cartAmountElement = document.getElementById("basket-amount");
   cartAmountElement.innerHTML = items;
+};
+
+export const removeProductCallback = (product) => {
+  console.log(product);
+  let shoppingCart = getShoppingCart();
+
+  const productsToRemove = [];
+
+  shoppingCart.products.forEach((productId, index) => {
+    if (productId.id === product.id) {
+      productsToRemove.push(index);
+    }
+  });
+
+  productsToRemove.reverse().forEach((index) => {
+    shoppingCart.products.splice(index, 1);
+    return;
+  });
+
+  saveShoppingCartData(shoppingCart);
+  updateCartIcon(shoppingCart.products.length);
+  buildShoppingCart();
 };
