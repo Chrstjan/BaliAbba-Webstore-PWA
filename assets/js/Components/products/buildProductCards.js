@@ -4,6 +4,7 @@ import {
   filteredProductsCallback,
 } from "./receivedProducts.js";
 import { subCategoryCallback } from "../categories/receivedCategories.js";
+import { buildProductAddToastbar } from "../toastbar/buildToastbar.js";
 
 let cardsContainer = document.getElementById("app");
 let clickedOption;
@@ -75,6 +76,8 @@ export const buildProductsCards = (featuredProducts) => {
       const clickedProductId = e.currentTarget.getAttribute("data-productId");
       let parsedProductId = parseInt(clickedProductId);
       productCardCartBtnCallback(parsedProductId);
+
+      buildProductAddToastbar();
     });
   });
 

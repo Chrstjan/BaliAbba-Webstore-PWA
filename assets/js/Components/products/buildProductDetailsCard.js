@@ -2,6 +2,7 @@ import {
   productCardCartBtnCallback,
   categoryProductCallback,
 } from "./receivedProducts.js";
+import { buildProductAddToastbar } from "../toastbar/buildToastbar.js";
 
 let cardsContainer = document.getElementById("app");
 
@@ -63,6 +64,8 @@ export const buildProductDetailsCard = (product) => {
   const productCartBtn = document.querySelector(".add-to-cart");
   productCartBtn.addEventListener("click", () => {
     productCardCartBtnCallback(product.id);
+
+    buildProductAddToastbar();
   });
 };
 

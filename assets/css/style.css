@@ -193,6 +193,25 @@
 }
 
 /*#endregion sidebar */
+#app .toastbar {
+  display: none;
+}
+
+#app .toastbar.hide-toastbar {
+  display: block;
+  background-color: #1c1c1c;
+  color: #fff;
+  padding: 0.1rem 0.3rem;
+  border-radius: 11px;
+  width: 40vw;
+  text-align: center;
+  position: fixed;
+  bottom: 0%;
+  left: 50%;
+  transform: translate(-50%);
+  margin-bottom: 0.4rem;
+}
+
 /*#region product cards  */
 /*#region featured product cards  */
 #app .product-card,

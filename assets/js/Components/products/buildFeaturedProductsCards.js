@@ -2,6 +2,7 @@ import {
   productCardCallback,
   productCardCartBtnCallback,
 } from "./receivedProducts.js";
+import { buildProductAddToastbar } from "../toastbar/buildToastbar.js";
 
 let cardsContainer = document.getElementById("app");
 
@@ -49,6 +50,8 @@ export const buildFeaturedProductsCards = (featuredProducts) => {
       const clickedProductId = e.currentTarget.getAttribute("data-productId");
       let parsedProductId = parseInt(clickedProductId);
       productCardCartBtnCallback(parsedProductId);
+
+      buildProductAddToastbar();
     });
   });
 };
