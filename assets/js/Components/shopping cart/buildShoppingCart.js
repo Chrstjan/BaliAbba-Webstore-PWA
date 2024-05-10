@@ -8,6 +8,7 @@ import {
 import { buildFeaturedProductsCards } from "../products/buildFeaturedProductsCards.js";
 
 const shoppingCartContainer = document.getElementById("app");
+const totalAmountContainer = document.createElement("div");
 
 export const buildShoppingCart = () => {
   let shoppingCartData = getShoppingCart();
@@ -76,6 +77,7 @@ export const buildShoppingCart = () => {
 
     shoppingCartContainer.innerHTML += filledShoppingCartContainer;
 
+    //#region event listeners
     let subtractProductBtn = document.querySelectorAll(".subtrack-amount-btn");
     subtractProductBtn.forEach((btn) => {
       btn.addEventListener("click", (e) => {
@@ -103,9 +105,53 @@ export const buildShoppingCart = () => {
         productRemoveCallback(parsedProductId);
       });
     });
+    //#endregion event listeners
   });
+
+  let discountAmount = shoppingCartData.products.reduce((total, product) => {
+    return total + product.discountPercentage;
+  }, 0);
+
+  let discountDecimal = 1 - discountAmount / 100;
+  console.log(discountDecimal);
+
+  console.log(discountAmount);
+
+  let productsDiscountPrice = shoppingCartData.products.reduce(
+    (total, product) =>
+      Math.floor(
+        total + product.price * product.productAmount * discountDecimal
+      ),
+    0
+  );
+
+  console.log(productsDiscountPrice);
+
+  let productsTotalAmount = shoppingCartData.products.reduce(
+    (total, product) => total + product.price * product.productAmount,
+    0
+  );
+
+  console.log(productsTotalAmount);
+
+  let totalAmountContent = `
+      <span class="price-container">
+        <header class="discount-container">
+          <h3>Discount</h3>
+          <p>${discountAmount}%</p>
+        </header>
+
+        <header class="total-container">
+          <h3>Total:</h3>
+          <p>${productsDiscountPrice} $</p>
+        </header>
+      </span>`;
+
+  totalAmountContainer.innerHTML += totalAmountContent;
+  shoppingCartContainer.appendChild(totalAmountContainer);
 };
 
 const clearApp = () => {
   shoppingCartContainer.innerHTML = "";
+  totalAmountContainer.innerHTML = "";
 };

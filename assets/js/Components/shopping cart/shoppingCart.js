@@ -89,6 +89,8 @@ export const subtrackProductAmountCallback = (productAmount) => {
         saveShoppingCartData(shoppingCart);
         buildShoppingCart();
         updateCartIcon(shoppingCart.products.length);
+      } else {
+        console.error("Error subtracting product amount!");
       }
     }
   });
@@ -104,6 +106,8 @@ export const addProductAmountCallback = (productAmount) => {
 
       saveShoppingCartData(shoppingCart);
       buildShoppingCart();
+    } else {
+      console.error("Error adding product amount");
     }
   });
 };
