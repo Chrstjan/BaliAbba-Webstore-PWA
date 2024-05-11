@@ -1,6 +1,9 @@
 import { allProductsArray } from "../products/receivedProducts.js";
 import { getShoppingCart } from "../shopping cart/shoppingCartLocalStorage.js";
-import { buildProductAddToastbar } from "./buildToastbar.js";
+import {
+  buildProductAddToastbar,
+  buildProductUpdateToastbar,
+} from "./buildToastbar.js";
 
 export const toastbarCallback = (productId) => {
   let shoppingCart = getShoppingCart();
@@ -19,8 +22,8 @@ export const toastbarCallback = (productId) => {
   );
 
   if (productAlreadyInShoppingCart) {
-    buildProductAddToastbar();
+    buildProductUpdateToastbar();
   } else {
-    console.log("Not in shopping cart");
+    buildProductAddToastbar();
   }
 };

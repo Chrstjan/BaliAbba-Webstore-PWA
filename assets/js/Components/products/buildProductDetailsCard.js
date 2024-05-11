@@ -63,9 +63,9 @@ export const buildProductDetailsCard = (product) => {
 
   const productCartBtn = document.querySelector(".add-to-cart");
   productCartBtn.addEventListener("click", () => {
-    productCardCartBtnCallback(product.id);
-
     toastbarCallback(product.id);
+
+    productCardCartBtnCallback(product.id);
   });
 };
 
