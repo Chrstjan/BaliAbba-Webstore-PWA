@@ -10,6 +10,7 @@ import { clearShoppingCart } from "./shoppingCart.js";
 
 const shoppingCartContainer = document.getElementById("app");
 const totalAmountContainer = document.createElement("div");
+totalAmountContainer.classList.add("total-amount-container");
 
 export const buildShoppingCart = () => {
   let shoppingCartData = getShoppingCart();
@@ -150,7 +151,7 @@ export const buildShoppingCart = () => {
             productsTotalAmount >= 150
               ? productsDiscountPrice
               : productsTotalAmount
-          }</p>
+          } $</p>
         </header>
     </span>
     <span class="checkout-container">

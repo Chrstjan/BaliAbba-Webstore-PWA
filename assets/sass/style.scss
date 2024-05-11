@@ -216,8 +216,9 @@
 }
 //#endregion toastbar
 
-/*#region product cards  */
-#app .back-btn-container {
+//#region back btn
+#app .back-btn-container,
+#app .category-back-btn {
   position: absolute;
   top: 11%;
   left: 0.6%;
@@ -235,13 +236,23 @@
     text-align: center;
   }
 }
+//#endregion back btn
+
+/*#region product cards  */
 /*#region featured product cards  */
+#app .sorting-container {
+  select {
+    border-radius: 10px;
+    padding: 0.2rem 0.5rem;
+  }
+}
 #app .product-card,
 #app .product-detail-card {
   @include flexContainer(column);
   border: 2px solid #000;
   border-radius: 7px;
   padding: 0rem 0.7rem 0rem 0.7rem;
+  background: #eee;
 
   .product-name {
     text-align: center;
@@ -350,13 +361,115 @@
 /*#endregion category cards  */
 
 //#region shopping cart
+//#region empty cart
+#app .empty-cart-container {
+  text-align: center;
+  padding-bottom: 0.7rem;
+
+  button {
+    background: #0ea00e;
+    color: #fff;
+    padding: 0.6rem 0.6rem;
+    border-radius: 9px;
+  }
+}
+//#endregion empty cart
+
+//#region filled cart
+
+//#region product figure
 #app .filled-container {
+  @include flexContainer(column);
+  border: 1px solid #000;
+  border-radius: 10px;
+  width: 250px;
+  padding: 0.5rem 0.5rem;
+  background: #eee;
+
   header {
+    @include flexContainer(row);
+    gap: 1rem;
+    padding-top: 0.5rem;
     img {
-      width: 10vw;
+      width: 20vw;
+    }
+    span h3 {
+      margin: 0;
+    }
+  }
+  figcaption {
+    .user-rating-container {
+      @include flexContainer(row);
+      gap: 0.5rem;
+      .star-rating-container {
+        @include flexContainer(row);
+        p:last-of-type {
+          text-align: center;
+          padding-bottom: 0.3rem;
+          color: #c7c711;
+        }
+      }
+    }
+    .product-amount-container {
+      @include flexContainer(row);
+      gap: 1rem;
+
+      button {
+        background: transparent;
+        color: #fff;
+      }
+
+      .subtrack-amount-btn,
+      .add-amount-btn {
+        border-radius: 50%;
+        padding: 0.2rem 0.45rem;
+        background: #000;
+      }
+
+      .remove-product-btn {
+        background: #c00606;
+        color: #fff;
+        padding: 0.2rem 0.2rem;
+        border-radius: 9px;
+      }
+    }
+    .price-container {
+      text-align: center;
     }
   }
 }
+//#endregion product figure
+
+//#region total amount
+.total-amount-container {
+  background: #eee;
+  border-top: 2px solid #000;
+  width: 100%;
+  @include flexContainer(column);
+  gap: 0.5rem;
+  text-align: center;
+
+  .checkout-container {
+    button {
+      background: #0ea00e;
+      color: #fff;
+      padding: 0.5rem 0.5rem;
+      border-radius: 9px;
+    }
+  }
+
+  .clear-cart-container {
+    padding-bottom: 0.5rem;
+    button {
+      background: #c00606;
+      color: #fff;
+      padding: 0.2rem 0.2rem;
+    }
+  }
+}
+//#endregion total amount
+//#endregion filled cart
+
 //#endregion shopping cart
 
 /*#endregion app  */
