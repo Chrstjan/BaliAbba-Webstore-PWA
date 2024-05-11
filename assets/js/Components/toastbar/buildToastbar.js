@@ -1,5 +1,6 @@
 const toastbarParentContainer = document.getElementById("app");
 let toastbar;
+let productInShoppingCart = false;
 
 export const buildProductAddToastbar = () => {
   console.log("Toastbar!!!");
@@ -14,6 +15,14 @@ export const buildProductAddToastbar = () => {
     toastbar = document.querySelector(".toastbar");
   } else {
     console.log("Already toasting!");
+    let toastbarContainerProductAdd = `
+    <div class="toastbar-update">
+        <h4>Product added to shopping cart</h4>
+    </div>`;
+
+    toastbarParentContainer.innerHTML += toastbarContainerProductAdd;
+
+    toastbar = document.querySelector(".toastbar-update");
   }
 
   toastbar.classList.add("hide-toastbar");

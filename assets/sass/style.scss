@@ -195,7 +195,8 @@
   display: none;
 }
 
-#app .toastbar.hide-toastbar {
+#app .toastbar.hide-toastbar,
+#app .toastbar-update.hide-toastbar {
   display: block;
   background-color: #1c1c1c;
   color: #fff;
