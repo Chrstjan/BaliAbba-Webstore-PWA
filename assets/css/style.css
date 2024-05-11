@@ -5,6 +5,7 @@
   width: 100%;
   position: fixed;
   top: 0;
+  z-index: 999;
 }
 .main-container .main-header .main-nav {
   display: flex;
@@ -31,10 +32,17 @@
   background: #fff;
   border-radius: 8px;
 }
+.main-container .main-header .main-nav .right-side .basket-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3rem;
+}
 .main-container .main-header .main-nav .right-side .basket-container img {
   width: 10vw;
   filter: invert(100);
-  padding-top: 1.1rem;
+  padding-top: 0.1rem;
 }
 
 /*#endregion header  */
@@ -214,6 +222,24 @@
 }
 
 /*#region product cards  */
+#app .back-btn-container {
+  position: absolute;
+  top: 11%;
+  left: 0.6%;
+  background: #eeeeee;
+  border-radius: 9px;
+  z-index: 88;
+}
+#app .back-btn-container button {
+  padding: 0;
+  padding: 0.1rem 0.2rem;
+  margin-bottom: 0.3rem;
+  background: transparent;
+  border: 0;
+  font-size: 30px;
+  text-align: center;
+}
+
 /*#region featured product cards  */
 #app .product-card,
 #app .product-detail-card {
@@ -276,6 +302,11 @@
   padding: 0.6rem 0.9rem;
   border-radius: 10px;
   text-transform: capitalize;
+}
+#app .product-card .about-product .product-description h4,
+#app .product-detail-card .about-product .product-description h4 {
+  max-width: 300px;
+  word-break: break-all;
 }
 #app .product-card .about-product .product-description p,
 #app .product-detail-card .about-product .product-description p {
