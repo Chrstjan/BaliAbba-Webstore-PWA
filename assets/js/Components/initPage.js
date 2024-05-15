@@ -4,6 +4,7 @@ import { getProductCategories } from "./categories/getCategories.js";
 import { getProducts } from "./products/getProducts.js";
 import { initializeShoppingCart } from "./shopping cart/shoppingCart.js";
 import { pageNavigation } from "./other/navigation.js";
+import { serviceWorker } from "./app.js";
 
 export const initPageLoad = () => {
   createLoading();
@@ -11,4 +12,5 @@ export const initPageLoad = () => {
   getProducts();
   initializeShoppingCart();
   pageNavigation();
+  serviceWorker();
 };
